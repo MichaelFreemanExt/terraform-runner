@@ -1,8 +1,22 @@
-# Container image that runs your code
-FROM alpine:3.10
+# Pull base image.
+FROM mcr.microsoft.com/powershell:lts-ubuntu-18.04
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+# Install dependencies
+RUN apt-get update
+RUN apt-get install -y curl zip
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+# Install Terraform
+ENV TERRAFORM_VERSION=1.0.2
+ENV TERRAFORM_RELEASE_URL=https://releases.hashicorp.com/terraform
+RUN curl -fsSL -O ${TERRAFORM_RELEASE_URL}/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    curl -fsSL ${TERRAFORM_RELEASE_URL}/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_SHA256SUMS | grep terraform_${TERRAFORM_VERSION}_linux_amd64.zip > SHA256SUMS && \
+    sha256sum -c SHA256SUMS && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    mv terraform /usr/local/bin/
+
+# Install the RunTools powershell module
+ADD RunTools /opt/microsoft/powershell/7-lts/Modules/RunTools
+    
+ADD entrypoint.ps1 /entrypoint.ps1
+
+ENTRYPOINT ["pwsh", "/entrypoint.ps1"]
