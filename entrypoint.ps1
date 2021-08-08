@@ -8,6 +8,6 @@ $installedModules = Get-Module -ListAvailable
 Write-Host "Available Modules $installedModules"
 
 
-Post-PrComment "Michael"
+Add-PrComment "Michael"
 & "terraform" version
 & "/usr/local/bin/terraform" version
