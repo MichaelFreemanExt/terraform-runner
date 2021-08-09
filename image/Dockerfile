@@ -16,7 +16,6 @@ RUN curl -fsSL -O ${TERRAFORM_RELEASE_URL}/${TERRAFORM_VERSION}/terraform_${TERR
 
 # Install the RunTools powershell module
 ADD RunTools /opt/microsoft/powershell/7-lts/Modules/RunTools
-    
-ADD entrypoint.ps1 /entrypoint.ps1
+COPY entrypoints/ /entrypoints/
 
-ENTRYPOINT ["pwsh", "/entrypoint.ps1"]
+ENTRYPOINT ["pwsh", "/entrypoints/fakeEntryPoint.ps1"]

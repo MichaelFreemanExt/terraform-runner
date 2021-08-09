@@ -1,0 +1,28 @@
+name: terraform-plan
+description: Create a terraform plan
+author: Michael Freeman
+
+inputs:
+  path:
+    description: Path to the terraform configuration
+    required: true
+  backend_config:
+    description: List of backend config values to set, one per line
+    required: false
+  add_github_comment:
+    description: Add the plan to the PR
+    required: false
+    default: 'true'
+    
+outputs:
+  changes:
+    description: If the plan changes any resources - 'true' or 'false'
+
+runs:
+  using: docker
+  image: '../Dockerfile'
+  entrypoint: /entrypoints/plan.sh
+
+branding:
+  icon: globe
+  color: purple
