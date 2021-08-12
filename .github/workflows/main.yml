@@ -9,11 +9,12 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
-        id: hello
+      - name: TF Plan
+        uses: ./terraform-plan
+        id: tfplan
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          path: "/terraform/files"
+          backend_config: |
+            "Key1:Value1"
+            "Key2:Value2"
+          add_github_comment: "true"
