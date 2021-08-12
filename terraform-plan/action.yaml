@@ -21,7 +21,7 @@ outputs:
 runs:
   using: docker
   image: '../image/Dockerfile'
-  entrypoint: /entrypoints/plan.sh
+  entrypoint: /entrypoints/plan.ps1
 
 branding:
   icon: globe
