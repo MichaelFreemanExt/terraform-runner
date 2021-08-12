@@ -20,7 +20,7 @@ outputs:
 
 runs:
   using: docker
-  image: '../Dockerfile'
+  image: '../image/Dockerfile'
   entrypoint: /entrypoints/plan.sh
 
 branding:
