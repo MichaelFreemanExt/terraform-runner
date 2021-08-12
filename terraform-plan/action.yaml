@@ -21,7 +21,8 @@ outputs:
 runs:
   using: docker
   image: '../image/Dockerfile'
-  entrypoint: "pwsh /entrypoints/plan.ps1"
+  args:
+    - plan
 
 branding:
   icon: globe
