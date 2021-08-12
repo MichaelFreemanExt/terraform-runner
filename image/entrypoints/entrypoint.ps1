@@ -5,6 +5,9 @@ param(
 )
 
 try {
+    
+    Install-Module -Name AWSPowerShell.NetCore -Force
+
 
     Write-Host "actionType : $actionType"
     Write-Host "looks like everything is good!"
