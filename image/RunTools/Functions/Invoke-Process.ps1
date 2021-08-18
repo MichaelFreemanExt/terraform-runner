@@ -17,7 +17,7 @@ function Invoke-Process {
 
         $childItem = Get-ChildItem
         Write-Host "Child items of current director $childItem"
-        Write-Host "$PWD.Path"
+        Write-Host "$PWD"
         
         
         $pinfo = New-Object System.Diagnostics.ProcessStartInfo
@@ -25,7 +25,7 @@ function Invoke-Process {
         $pinfo.RedirectStandardError = $true
         $pinfo.RedirectStandardOutput = $true
         $pinfo.UseShellExecute = $false
-        $pinfo.WorkingDirectoryh = $PWD.Path
+        $pinfo.WorkingDirectory = $PWD
         $pinfo.Arguments = $ArgumentList -join " "
 
         $p = New-Object System.Diagnostics.Process
