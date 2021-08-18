@@ -20,7 +20,8 @@ try {
 
     Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"  
     
-    Write-TfBackend $backendConfig
+    $backendConfigHashTable = ConvertFrom-StringData -StringData $backendConfig
+    Write-TfBackend $backendConfigHashTable
 
     Write-Host "looks like everything is good!"
     Write-Host "PS Module Paths $Env:PSModulePath"
