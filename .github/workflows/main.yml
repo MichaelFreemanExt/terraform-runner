@@ -14,8 +14,8 @@ jobs:
       - name: AWS ECR Login
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          AWS_ACCESS_KEY_ID: ${{ secrets.MIKE_FREE_TIER_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.MIKE_FREE_TIER_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.MIKE_FREE_TIER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.MIKE_FREE_TIER_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
       - name: TF Plan
