@@ -6,19 +6,25 @@ jobs:
     name: TfPlan testing
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
-    steps:
-      # To use this repository's private action,
-      # you must check out the repository      
+    steps:    
       
       - name: Checkout
         uses: actions/checkout@v2
       
+      - name: AWS ECR Login
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.MIKE_FREE_TIER_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.MIKE_FREE_TIER_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
       - name: TF Plan
         uses: ./terraform-plan
         id: tfplan
         with:
           path: "../testing/terraform"
           backend_config: |
-            "Key1:Value1"
-            "Key2:Value2"
+            bucket = "mybucket"
+            key    = "myKey"
+            region = "eu-west-2"
           add_github_comment: "true"

@@ -18,7 +18,9 @@ try {
     Write-Host "terraformFiles : $terraformFiles"
     Write-Host "backendConfig : $backendConfig"
 
-    Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"    
+    Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"  
+    
+    Write-TfBackend $backendConfig
 
     Write-Host "looks like everything is good!"
     Write-Host "PS Module Paths $Env:PSModulePath"
