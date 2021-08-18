@@ -2,6 +2,8 @@ function Write-TfBackend {
     
     [CmdletBinding()]
     param (
+        [parameter(mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [Hashtable]$Backend
     )
     

@@ -12,16 +12,27 @@ param(
 
 try {
     
+    $currentDirectory = Get-Location
     Install-Module -Name AWSPowerShell.NetCore -Force
 
     Write-Host "actionType : $actionType"
     Write-Host "terraformFiles : $terraformFiles"
     Write-Host "backendConfig : $backendConfig"
 
-    Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"  
+    Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"
     
+    #resolve actual directories
+    $resolve_params = @{
+        SourceDirectory = "$currentDirectory"
+        WorkingDirectory = "$terraformFiles"
+    }   
+    Resolve-PipelineDirectory @resolve_params
+
+    Write-Host "Resolved Working Directory $Env:ResolvedWorkingDirectory"
+
+    #write the terraform backend
     $backendConfigHashTable = ConvertFrom-StringData -StringData $backendConfig
-    Write-TfBackend $backendConfigHashTable
+    Write-TfBackend $backendConfigHashTable    
 
     Write-Host "looks like everything is good!"
     Write-Host "PS Module Paths $Env:PSModulePath"
