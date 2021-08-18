@@ -6,7 +6,7 @@ jobs:
     name: TfPlan testing
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
-    steps:    
+    steps:  
       
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
         with:
           path: "/testing/terraform"
           backend_config: |
-            bucket = mybucket
-            key    = myKey
+            bucket = testing-mike-c-tfstate
+            key    = testing-app-state
             region = eu-west-2
           add_github_comment: "true"
