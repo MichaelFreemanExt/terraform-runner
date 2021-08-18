@@ -40,8 +40,9 @@ try {
     Write-Host "Child items of current director $childItem"
 
     Add-PrComment "Michael"
-    & "terraform" init
-    & "terraform" plan
+    Invoke-Process -FilePath "terraform" -ArgumentList @(
+        "init", "-no-color"
+    )
 }
 catch {
     Write-Host "An error occured while processing $actionType"
