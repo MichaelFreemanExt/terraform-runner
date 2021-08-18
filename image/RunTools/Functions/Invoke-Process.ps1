@@ -13,13 +13,19 @@ function Invoke-Process {
     begin {       
     }
     
-    process {
+    process {     
+
+        $childItem = Get-ChildItem
+        Write-Host "Child items of current director $childItem"
+        Write-Host "$PWD.Path"
+        
         
         $pinfo = New-Object System.Diagnostics.ProcessStartInfo
         $pinfo.FileName = $FilePath
         $pinfo.RedirectStandardError = $true
         $pinfo.RedirectStandardOutput = $true
         $pinfo.UseShellExecute = $false
+        $pinfo.WorkingDirectoryh = $PWD.Path
         $pinfo.Arguments = $ArgumentList -join " "
 
         $p = New-Object System.Diagnostics.Process
@@ -31,15 +37,17 @@ function Invoke-Process {
         $stderr = $p.StandardError.ReadToEnd()
 
         Write-Host "stdout: $stdout"
-        Write-Host "stderr: $stderr"   
+        Write-Host "stderr: $stderr"
+        Write-Host "exitcode: $p.ExitCode"   
 
         if ($stderr.Length -gt 0) {
+            Write-Host "throwing std error"   
             throw $stderr
         }
 
         if ($p.ExitCode -notin $IgnoreExitCode) {
-            [System.Console]::Write($result.StandardError)
-            throw "Process '${FilePath}' exited with code $($result.ExitCode)"
+            Write-Host "$p.ExitCode"
+            throw "Process '${FilePath}' exited with code $($p.ExitCode)"
         }
 
         $stdout
