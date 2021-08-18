@@ -8,14 +8,16 @@ jobs:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:
       # To use this repository's private action,
-      # you must check out the repository
+      # you must check out the repository      
+      
       - name: Checkout
         uses: actions/checkout@v2
+      
       - name: TF Plan
         uses: ./terraform-plan
         id: tfplan
         with:
-          path: "/terraform/files"
+          path: "../testing/terraform"
           backend_config: |
             "Key1:Value1"
             "Key2:Value2"
