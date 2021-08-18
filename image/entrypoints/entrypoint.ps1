@@ -32,7 +32,10 @@ try {
 
     #write the terraform backend
     $backendConfigHashTable = ConvertFrom-StringData -StringData $backendConfig
-    Write-TfBackend $backendConfigHashTable
+    Write-TfBackend $backendConfigHashTable    
+
+    $childItem = Get-ChildItem
+    Write-Host "Child items of current director $childItem"
 
     Add-PrComment "Michael"
     & "terraform" version
