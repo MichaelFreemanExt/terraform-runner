@@ -40,8 +40,8 @@ try {
     Write-Host "Child items of current director $childItem"
 
     Add-PrComment "Michael"
-    & "terraform" version
-    & "/usr/local/bin/terraform" version
+    & "terraform" init
+    & "terraform" plan
 }
 catch {
     Write-Host "An error occured while processing $actionType"
