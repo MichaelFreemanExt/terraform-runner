@@ -4,19 +4,22 @@ param(
     $actionType,
 
     [Parameter(Mandatory=$false)]
-    $terraformFiles
+    $terraformFiles,
+
+    [Parameter(Mandatory=$false)]
+    $backendConfig
 )
 
 try {
     
     Install-Module -Name AWSPowerShell.NetCore -Force
 
-
-    Write-Host "Hello 1 $1"
-    Write-Host "Hello 2 $2"
-
     Write-Host "actionType : $actionType"
     Write-Host "terraformFiles : $terraformFiles"
+    Write-Host "backendConfig : $backendConfig"
+
+    Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"    
+
     Write-Host "looks like everything is good!"
     Write-Host "PS Module Paths $Env:PSModulePath"
     $childItem = Get-ChildItem "/opt/microsoft/powershell/7-lts/Modules"

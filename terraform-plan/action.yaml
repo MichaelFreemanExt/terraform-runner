@@ -24,6 +24,7 @@ runs:
   args:
     - plan
     - ${{ inputs.path }}
+    - ${{ inputs.backend_config }}
 
 branding:
   icon: globe
