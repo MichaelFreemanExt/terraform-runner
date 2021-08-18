@@ -24,7 +24,7 @@ jobs:
         with:
           path: "../testing/terraform"
           backend_config: |
-            bucket = "mybucket"
-            key    = "myKey"
-            region = "eu-west-2"
+            bucket = mybucket
+            key    = myKey
+            region = eu-west-2
           add_github_comment: "true"
