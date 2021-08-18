@@ -30,6 +30,8 @@ try {
 
     Write-Host "Resolved Working Directory $Env:ResolvedWorkingDirectory"
 
+    Set-Location "$Env:ResolvedWorkingDirectory"
+
     #write the terraform backend
     $backendConfigHashTable = ConvertFrom-StringData -StringData $backendConfig
     Write-TfBackend $backendConfigHashTable    
