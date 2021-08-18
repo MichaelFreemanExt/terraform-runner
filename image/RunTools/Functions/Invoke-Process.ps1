@@ -5,7 +5,7 @@ function Invoke-Process {
         [ValidateNotNullOrEmpty()]
         [string]$FilePath,
 
-        [string]$ArgumentList,
+        [string[]]$ArgumentList = @(),
 
         [int[]]$IgnoreExitCode = @(0)
     )
@@ -20,7 +20,7 @@ function Invoke-Process {
         $pinfo.RedirectStandardError = $true
         $pinfo.RedirectStandardOutput = $true
         $pinfo.UseShellExecute = $false
-        $pinfo.Arguments = "$ArgumentList"
+        $pinfo.Arguments = $ArgumentList -join " "
 
         $p = New-Object System.Diagnostics.Process
         $p.StartInfo = $pinfo
