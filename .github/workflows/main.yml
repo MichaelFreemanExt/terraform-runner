@@ -3,7 +3,7 @@ on: [push]
 jobs:
   terraform_plan:
     runs-on: ubuntu-latest
-    name: TfPlabn testing
+    name: TfPlan testing
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:

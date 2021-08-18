@@ -23,6 +23,7 @@ runs:
   image: '../image/Dockerfile'
   args:
     - plan
+    - ${{ inputs.path }}
 
 branding:
   icon: globe
