@@ -1,5 +1,6 @@
 # Pull base image.
 FROM mcr.microsoft.com/powershell:lts-ubuntu-18.04
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
 
 # Install dependencies
 RUN apt-get update
@@ -18,4 +19,4 @@ RUN curl -fsSL -O ${TERRAFORM_RELEASE_URL}/${TERRAFORM_VERSION}/terraform_${TERR
 ADD RunTools /opt/microsoft/powershell/7-lts/Modules/RunTools
 COPY entrypoints/ /entrypoints/
 
-ENTRYPOINT ["pwsh /entrypoints/entrypoint.ps1"]
+ENTRYPOINT Write-output "hello" 
