@@ -13,12 +13,7 @@ function Invoke-Process {
     begin {       
     }
     
-    process {     
-
-        $childItem = Get-ChildItem
-        Write-Host "Child items of current director $childItem"
-        Write-Host "$PWD"
-        
+    process {             
         
         $pinfo = New-Object System.Diagnostics.ProcessStartInfo
         $pinfo.FileName = $FilePath
