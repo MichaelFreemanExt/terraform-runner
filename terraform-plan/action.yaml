@@ -21,6 +21,7 @@ outputs:
 runs:
   using: docker
   image: '../image/Dockerfile'
+  entrypoint: '/entrypoints/plan.ps1'
   args:
     - plan
     - ${{ inputs.path }}

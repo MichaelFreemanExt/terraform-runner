@@ -20,5 +20,3 @@ COPY entrypoints/ /entrypoints/
 
 FROM base as main
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
-
-ENTRYPOINT Write-output "hello" 
