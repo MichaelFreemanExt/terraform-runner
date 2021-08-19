@@ -40,8 +40,16 @@ try {
     Write-Host "Child items of current director $childItem"
 
     Add-PrComment "Michael"
+    
     Invoke-Process -FilePath "terraform" -ArgumentList @(
         "init", "-no-color"
+    )
+
+    $planFile = "$Env:ResolvedWorkingDirectory/plan.tfplan"
+    Write-Host "plan file name : $planFile"
+    Invoke-Process -FilePath "terraform" -ArgumentList @(
+        "plan", "-no-color", "-out",
+        "$planFile"
     )
 }
 catch {
