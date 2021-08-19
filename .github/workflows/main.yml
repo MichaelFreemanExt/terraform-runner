@@ -22,7 +22,7 @@ jobs:
         uses: ./terraform-plan
         id: tfplan
         with:
-          path: "/testing/terraform"
+          path: /testing/terraform
           backend_config: |
             bucket = testing-mike-c-tfstate
             key    = testing-app-state
