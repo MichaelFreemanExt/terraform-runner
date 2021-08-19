@@ -15,7 +15,7 @@ try {
     $currentDirectory = Get-Location
     Install-Module -Name AWSPowerShell.NetCore -Force
 
-    Write-Host "entrypointentrypointentrypointentrypointentrypointentrypointentrypoint"
+    Write-Host "planplanplanplanplanplanplanplanplanplanplanplan"
     Write-Host "actionType : $actionType"
     Write-Host "terraformFiles : $terraformFiles"
     Write-Host "backendConfig : $backendConfig"
