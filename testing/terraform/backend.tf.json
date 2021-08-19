@@ -1,0 +1,11 @@
+{
+    "terraform": {
+        "backend": {
+            "s3" : {
+                "key": "testing-app-state",
+                "bucket": "testing-mike-c-tfstate",
+                "region": "eu-west-2"
+            }
+        }
+    }
+}

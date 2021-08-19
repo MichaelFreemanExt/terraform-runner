@@ -4,7 +4,10 @@ function Write-TfBackend {
     param (
         [parameter(mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [Hashtable]$Backend
+        [Hashtable]$Backend,
+
+        [ValidateNotNullOrEmpty()]
+        $backendType = "s3"
     )
     
     process {
@@ -13,7 +16,9 @@ function Write-TfBackend {
 
         @{
             "terraform" = @{
-                "backend" = $Backend
+                "backend" = @{
+                    $backendType = $Backend
+                }
             }
         } | ConvertTo-Json -Depth 99 | Set-Content "backend.tf.json" -Encoding utf8NoBOM
 
