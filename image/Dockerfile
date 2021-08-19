@@ -19,6 +19,6 @@ ADD RunTools /opt/microsoft/powershell/7-lts/Modules/RunTools
 COPY entrypoints/ /entrypoints/
 
 FROM base as main
-SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
+SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
 
 ENTRYPOINT Write-output "hello" 
