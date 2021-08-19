@@ -18,6 +18,3 @@ RUN curl -fsSL -O ${TERRAFORM_RELEASE_URL}/${TERRAFORM_VERSION}/terraform_${TERR
 ADD RunTools /opt/microsoft/powershell/7-lts/Modules/RunTools
 COPY entrypoints/ /entrypoints/
 RUN chmod +x /entrypoints/plan.ps1
-
-FROM base as main
-SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
