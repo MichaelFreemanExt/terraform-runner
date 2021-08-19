@@ -31,10 +31,6 @@ function Invoke-Process {
         $stdout = $p.StandardOutput.ReadToEnd()
         $stderr = $p.StandardError.ReadToEnd()
 
-        Write-Host "stdout: $stdout"
-        Write-Host "stderr: $stderr"
-        Write-Host "exitcode: $p.ExitCode"   
-
         if ($stderr.Length -gt 0) {
             Write-Host "throwing std error"   
             throw $stderr
