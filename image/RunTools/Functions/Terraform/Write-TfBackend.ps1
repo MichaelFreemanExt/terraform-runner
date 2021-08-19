@@ -17,8 +17,8 @@ function Write-TfBackend {
             }
         } | ConvertTo-Json -Depth 99 | Set-Content "backend.tf.json" -Encoding utf8NoBOM
 
-        $content = Get-Content -Path .\backend.tf.json
-        Write-Host "$content";
+        $content = Get-Content -Path ./backend.tf.json
+        Write-Host "content : $content";
 
         Write-Host "Finished writing backend $Backend"
     }
