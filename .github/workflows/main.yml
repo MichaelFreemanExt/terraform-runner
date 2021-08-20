@@ -3,7 +3,7 @@ on: [push]
 jobs:
   terraform_plan:
     runs-on: ubuntu-latest
-    name: TfPlan testing
+    name: TF Plan
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:  
@@ -31,7 +31,8 @@ jobs:
   
   terraform_apply:
     runs-on: ubuntu-latest
-    name: TfPlan testing
+    name: TF Apply
+    needs: terraform_plan
     environment:
       name: Sandbox_TfApply
     env:
