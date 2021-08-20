@@ -1,8 +1,5 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory=$true)]
-    $actionType,
-
     [Parameter(Mandatory=$false)]
     $terraformFiles,
 
@@ -16,7 +13,6 @@ try {
     Install-Module -Name AWSPowerShell.NetCore -Force
 
     Write-Host "planplanplanplanplanplanplanplanplanplanplanplan"
-    Write-Host "actionType : $actionType"
     Write-Host "terraformFiles : $terraformFiles"
     Write-Host "backendConfig : $backendConfig"
 
