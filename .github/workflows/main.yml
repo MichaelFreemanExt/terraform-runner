@@ -50,8 +50,8 @@ jobs:
           aws-region: eu-west-2
 
       - name: TF Plan
-        uses: ./terraform-plan
-        id: tfplan
+        uses: ./terraform-apply
+        id: tfapply
         with:
           path: /testing/terraform
           backend_config: |

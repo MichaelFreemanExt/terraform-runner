@@ -10,7 +10,7 @@ param(
 try {
     #Install-Module -Name AWSPowerShell.NetCore -Force
 
-    Write-Host "planplanplanplanplanplanplanplanplanplanplanplan"
+    Write-Host "applyapplyapplyapplyapplyapplyapplyapply"
     Write-Host "terraformFiles : $terraformFiles"
     Write-Host "backendConfig : $backendConfig"
 
