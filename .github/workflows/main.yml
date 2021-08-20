@@ -4,9 +4,35 @@ jobs:
   terraform_plan:
     runs-on: ubuntu-latest
     name: TfPlan testing
+    env:
+      TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
+    steps:  
+            - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: AWS ECR Login
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.MIKE_FREE_TIER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.MIKE_FREE_TIER_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      - name: TF Plan
+        uses: ./terraform-plan
+        id: tfplan
+        with:
+          path: /testing/terraform
+          backend_config: |
+            bucket = testing-mike-c-tfstate
+            key    = testing-app-state
+            region = eu-west-2
+          add_github_comment: "true"
+  
+  terraform_apply:
+    runs-on: ubuntu-latest
+    name: TfPlan testing
     environment:
       name: Sandbox_TfApply
-      url: ${{ steps.create_release.outputs.html_url }}
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:  

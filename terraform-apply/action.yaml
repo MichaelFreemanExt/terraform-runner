@@ -23,6 +23,6 @@ runs:
   image: '../image/Dockerfile'
   entrypoint: 'pwsh'
   args:
-    - /entrypoints/plan.ps1
+    - /entrypoints/apply.ps1
     - ${{ inputs.path }}
     - ${{ inputs.backend_config }}
