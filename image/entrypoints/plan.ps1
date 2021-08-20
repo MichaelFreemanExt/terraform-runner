@@ -8,9 +8,7 @@ param(
 )
 
 try {
-    
-    $currentDirectory = Get-Location
-    Install-Module -Name AWSPowerShell.NetCore -Force
+    #Install-Module -Name AWSPowerShell.NetCore -Force
 
     Write-Host "planplanplanplanplanplanplanplanplanplanplanplan"
     Write-Host "terraformFiles : $terraformFiles"
@@ -20,7 +18,7 @@ try {
     
     #resolve actual directories
     $resolve_params = @{
-        SourceDirectory = "$currentDirectory"
+        SourceDirectory = Get-Location
         WorkingDirectory = "$terraformFiles"
     }   
     Resolve-WorkflowDirectory @resolve_params
