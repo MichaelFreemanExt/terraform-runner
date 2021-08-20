@@ -22,9 +22,6 @@ try {
         WorkingDirectory = "$terraformFiles"
     }   
     Resolve-WorkflowDirectory @resolve_params
-
-    Write-Host "Resolved Working Directory $Env:ResolvedWorkingDirectory"
-
     Set-Location "$Env:ResolvedWorkingDirectory"
 
     #write the terraform backend

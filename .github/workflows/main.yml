@@ -4,6 +4,9 @@ jobs:
   terraform_plan:
     runs-on: ubuntu-latest
     name: TfPlan testing
+    environment:
+      name: Sandbox_TfApply
+      url: ${{ steps.create_release.outputs.html_url }}
     env:
       TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:  
