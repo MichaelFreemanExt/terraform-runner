@@ -25,7 +25,7 @@ jobs:
           path: /testing/terraform
           backend_config: |
             bucket = testing-mike-c-tfstate
-            key    = testing-app-state
+            key    = testing-app-state1
             region = eu-west-2
           add_github_comment: "true"
   
@@ -56,6 +56,6 @@ jobs:
           path: /testing/terraform
           backend_config: |
             bucket = testing-mike-c-tfstate
-            key    = testing-app-state
+            key    = testing-app-state1
             region = eu-west-2
           add_github_comment: "true"
