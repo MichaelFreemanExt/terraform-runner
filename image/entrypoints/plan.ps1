@@ -8,12 +8,6 @@ param(
 )
 
 try {
-    #Install-Module -Name AWSPowerShell.NetCore -Force
-
-    Write-Host "planplanplanplanplanplanplanplanplanplanplanplan"
-    Write-Host "terraformFiles : $terraformFiles"
-    Write-Host "backendConfig : $backendConfig"
-
     Write-Host "GITHUB_REPOSITORY : $env:GITHUB_REPOSITORY"
     
     #resolve actual directories
@@ -27,11 +21,6 @@ try {
     #write the terraform backend
     $backendConfigHashTable = ConvertFrom-StringData -StringData $backendConfig
     Write-TfBackend $backendConfigHashTable    
-
-    $childItem = Get-ChildItem
-    Write-Host "Child items of current director $childItem"
-
-    Add-PrComment "Michael"
     
     Invoke-Process -FilePath "terraform" -ArgumentList @(
         "init", "-no-color"

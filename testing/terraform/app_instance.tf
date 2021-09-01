@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "fakeecrtest" {
-  name                 = "fakeecrtest1"
+  name                 = "fakeecrtest"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

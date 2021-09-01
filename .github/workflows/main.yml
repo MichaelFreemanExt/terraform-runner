@@ -4,8 +4,6 @@ jobs:
   terraform_plan:
     runs-on: ubuntu-latest
     name: TF Plan
-    env:
-      TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:  
       
       - name: Checkout
@@ -25,7 +23,7 @@ jobs:
           path: /testing/terraform
           backend_config: |
             bucket = testing-mike-c-tfstate
-            key    = testing-app-state1
+            key    = testing-app-state
             region = eu-west-2
           add_github_comment: "true"
   
@@ -35,8 +33,6 @@ jobs:
     needs: terraform_plan
     environment:
       name: Sandbox_TfApply
-    env:
-      TEST_ENV: TEST_ENVIRONMENT_VARIABLE_VALUE
     steps:  
       
       - name: Checkout
@@ -56,6 +52,6 @@ jobs:
           path: /testing/terraform
           backend_config: |
             bucket = testing-mike-c-tfstate
-            key    = testing-app-state1
+            key    = testing-app-state
             region = eu-west-2
           add_github_comment: "true"
